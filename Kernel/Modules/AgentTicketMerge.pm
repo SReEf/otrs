@@ -448,6 +448,7 @@ sub Run {
         $Article{Subject} = $TicketObject->TicketSubjectBuild(
             TicketNumber => $Ticket{TicketNumber},
             Subject      => $Article{Subject} || '',
+            To           => $GetParam{To} || '',
         );
 
         # prepare from ...

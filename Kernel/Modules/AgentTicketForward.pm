@@ -941,6 +941,7 @@ sub SendEmail {
         TicketNumber => $Ticket{TicketNumber},
         Action       => 'Forward',
         Subject      => $GetParam{Subject} || '',
+        To           => $GetParam{To} || '',
     );
 
     # create html strings for all dynamic fields

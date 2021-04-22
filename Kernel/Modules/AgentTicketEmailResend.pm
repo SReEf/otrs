@@ -465,6 +465,7 @@ sub Run {
         $GetParam{Subject} = $TicketObject->TicketSubjectBuild(
             TicketNumber => $Tn,
             Subject      => $GetParam{Subject} || '',
+            To           => $GetParam{To} || '',
         );
 
         my %ArticleParam;

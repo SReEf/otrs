@@ -949,6 +949,12 @@ sub TicketSubjectBuild {
     my $TicketSubjectRe     = $ConfigObject->Get('Ticket::SubjectRe');
     my $TicketSubjectFwd    = $ConfigObject->Get('Ticket::SubjectFwd');
     my $TicketSubjectFormat = $ConfigObject->Get('Ticket::SubjectFormat') || 'Left';
+    my $ExcludedEmailToSubjectFormat = $ConfigObject->Get('Ticket::ExcludedEmailToSubjectFormat');
+
+    # disable TicketSubjectFormat for emails from Ticket::ExcludedEmailToSubjectFormat
+    if ($Param{To} && IsArrayRefWithData($ExcludedEmailToSubjectFormat)) {
+        $TicketSubjectFormat = 'None' if grep {$_ eq $Param{To}} @{$ExcludedEmailToSubjectFormat};
+    }
 
     # return subject for new tickets
     if ( $Param{Type} && $Param{Type} eq 'New' ) {

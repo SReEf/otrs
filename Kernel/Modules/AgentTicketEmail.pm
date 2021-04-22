@@ -1655,6 +1655,7 @@ sub Run {
             TicketNumber => $Tn,
             Subject      => $GetParam{Subject} || '',
             Type         => 'New',
+            To           => $GetParam{To} || '',
         );
 
         # check if new owner is given (then send no agent notify)
